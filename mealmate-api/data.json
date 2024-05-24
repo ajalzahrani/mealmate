@@ -1,0 +1,229 @@
+[
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "A",
+      "Dinner": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "A",
+      "Dinner": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": "A"
+    }
+  },
+  {
+    "bedId": "BED555",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "A",
+      "Dinner": "B"
+    }
+  },
+  {
+    "bedId": "BED666",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": null,
+      "Dinner": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "A",
+      "Dinner": null,
+      "Snack": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "B",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "B",
+      "Snack": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": null,
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": null,
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "B",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Dinner": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Dinner": "A",
+      "Lunch": "A",
+      "Breakfast": "A",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "B",
+      "Snack": "B"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "A",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "BED123",
+    "categories": {
+      "undefined": null,
+      "Snack": "B",
+      "Dinner": "A",
+      "Breakfast": "B",
+      "Lunch": "A"
+    }
+  }
+]

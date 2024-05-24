@@ -1,0 +1,10 @@
+POST http://localhost:3001/submit
+Content-Type: application/json
+
+{
+    "bedId": "BED123", 
+    "categories": "category"
+}
+
+###
+GET http://localhost:3001/data

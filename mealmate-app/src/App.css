@@ -1,0 +1,152 @@
+/* App.css */
+
+.App {
+  text-align: center;
+  color: beige;
+}
+
+.App-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.language-selector {
+  margin-bottom: 20px;
+}
+
+.bed-id-input {
+  margin-bottom: 20px;
+}
+
+.bed-id-input label {
+  margin-right: 10px;
+}
+
+.meal {
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 1px;
+  width: 400px;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-card {
+  
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  width: 45%;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.category-card.selected {
+  background-color: #454444;
+    border: 1px solid #444;
+  /* background-color: #282c34; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.category-card h3 {
+  margin-top: 0;
+}
+
+.choose-button {
+  margin-top: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.choose-button:hover {
+  background-color: #ddd;
+}
+
+.category-card.selected .choose-button {
+  background-color: #61dafb;
+  color: #282c34;
+}
+
+.submit-button {
+    display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #61dafb;
+      color: #282c34;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 10px;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  color: #ff0;
+}
+
+.popup-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(242, 236, 236, 1);
+  /* Reduced transparency */
+  color: rgb(47, 14, 14);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 9999;
+}
+
+.popup-content {
+  position: relative;
+}
+
+.close {
+  /* position: absolute; */
+  top: 0px;
+  right: 0px;
+  /* Adjusted right position */
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ccc;
+  /* Light gray color on hover */
+}
