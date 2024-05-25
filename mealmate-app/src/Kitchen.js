@@ -7,8 +7,14 @@ const Kitchen = () => {
   const [error, setError] = useState(null);
   const [viewMode, setViewMode] = useState("card");
 
+  const apiUrl = process.env.IS_DEVELOPMENT
+    ? process.env.DEV_API_URL
+    : process.env.PRO_API_URL;
+
   useEffect(() => {
-    fetch("http://localhost:3001/data")
+    const apiEndpoint = apiUrl + "/data";
+
+    fetch(apiEndpoint)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

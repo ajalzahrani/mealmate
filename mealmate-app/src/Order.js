@@ -14,6 +14,9 @@ const Order = ({ bedParam }) => {
   });
   const [popupMessage, setPopupMessage] = useState(null);
   const [bedId, setBedId] = useState("");
+  const apiUrl = process.env.IS_DEVELOPMENT
+    ? process.env.DEV_API_URL
+    : process.env.PRO_API_URL;
 
   useEffect(() => {
     // Function to handle QR code scanning
@@ -74,7 +77,7 @@ const Order = ({ bedParam }) => {
     }
 
     // Replace with your API endpoint
-    const apiEndpoint = "http://localhost:3001/submit";
+    const apiEndpoint = apiUrl + "/submit";
 
     fetch(apiEndpoint, {
       method: "POST",

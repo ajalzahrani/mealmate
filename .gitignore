@@ -4,6 +4,7 @@
 mealmate-app/node_modules
 mealmate-api/node_modules
 mealmate-app/.pnp
+mealmate-app/.env
 .pnp.js
 
 # testing
