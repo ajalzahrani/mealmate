@@ -8,7 +8,6 @@ const Kitchen = () => {
   const [error, setError] = useState(null);
   const [viewMode, setViewMode] = useState("card");
 
-  console.log("API URL:", apiUrl); // For debugging
   useEffect(() => {
     const apiEndpoint = apiUrl + "/data";
 

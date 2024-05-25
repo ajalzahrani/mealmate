@@ -54,7 +54,7 @@ const Order = ({ bedParam }) => {
 
   const handleSubmit = () => {
     if (!bedId) {
-      alert("Please enter a valid bed ID");
+      setPopupMessage("Please enter a valid bed ID");
       return;
     }
 

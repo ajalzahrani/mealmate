@@ -1,0 +1,16 @@
+/* Layout.css */
+.content {
+    padding-bottom: 60px;
+    /* Adjust according to your footer height */
+}
+
+/* Footer.css */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
