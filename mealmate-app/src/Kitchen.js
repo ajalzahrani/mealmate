@@ -1,5 +1,6 @@
 import "./Kitchen.css";
 import React, { useState, useEffect } from "react";
+import apiUrl from "./config";
 
 const Kitchen = () => {
   const [jsonData, setJsonData] = useState(null);
@@ -7,10 +8,7 @@ const Kitchen = () => {
   const [error, setError] = useState(null);
   const [viewMode, setViewMode] = useState("card");
 
-  const apiUrl = process.env.IS_DEVELOPMENT
-    ? process.env.DEV_API_URL
-    : process.env.PRO_API_URL;
-
+  console.log("API URL:", apiUrl); // For debugging
   useEffect(() => {
     const apiEndpoint = apiUrl + "/data";
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Meal from "./components/Meal";
 import mealsData from "./mealsData";
 import PopupMessage from "./components/PopMessage";
+import apiUrl from "./config";
 
 const Order = ({ bedParam }) => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -14,9 +15,6 @@ const Order = ({ bedParam }) => {
   });
   const [popupMessage, setPopupMessage] = useState(null);
   const [bedId, setBedId] = useState("");
-  const apiUrl = process.env.IS_DEVELOPMENT
-    ? process.env.DEV_API_URL
-    : process.env.PRO_API_URL;
 
   useEffect(() => {
     // Function to handle QR code scanning
