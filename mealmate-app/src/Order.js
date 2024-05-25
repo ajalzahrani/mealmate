@@ -6,7 +6,7 @@ import PopupMessage from "./components/PopMessage";
 import apiUrl from "./config";
 
 const Order = ({ bedParam }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [selectedLanguage, setSelectedLanguage] = useState("ar");
   const [selectedCategories, setSelectedCategories] = useState({
     Breakfast: null,
     Lunch: null,
@@ -107,28 +107,54 @@ const Order = ({ bedParam }) => {
   return (
     <div className="App">
       <div className="App-body">
-        <h1>{selectedLanguage === "en" ? "Order" : "طلب"}</h1>
+        <h1>{selectedLanguage === "en" ? "Food Menu" : "قائمة الطعام"}</h1>
 
-        <div className="language-selector">
-          <label>
-            {selectedLanguage === "en" ? "اختر اللغة:" : "Select Language:"}{" "}
-          </label>
-          <select value={selectedLanguage} onChange={handleLanguageChange}>
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-          </select>
-        </div>
-        <div className="bed-id-input">
-          <label>
-            {selectedLanguage === "en" ? "Bed ID:" : "رقم السرير:"}{" "}
-          </label>
-          <input
-            type="text"
-            value={bedId}
-            onChange={(e) => setBedId(e.target.value)}
-            placeholder="Bed ID"
-          />
-        </div>
+        {selectedLanguage === "en" ? (
+          <div className="language-selector">
+            <select value={selectedLanguage} onChange={handleLanguageChange}>
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+            <label>
+              {selectedLanguage === "en" ? ":  اختر اللغة" : "Select Language:"}{" "}
+            </label>
+          </div>
+        ) : (
+          <div className="language-selector">
+            <label>
+              {selectedLanguage === "en" ? "اختر اللغة:" : "Select Language:"}{" "}
+            </label>
+            <select value={selectedLanguage} onChange={handleLanguageChange}>
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </div>
+        )}
+        {selectedLanguage === "en" ? (
+          <div className="bed-id-input">
+            <label>
+              {selectedLanguage === "en" ? "Bed ID:" : "رقم السرير:"}{" "}
+            </label>
+            <input
+              type="text"
+              value={bedId}
+              onChange={(e) => setBedId(e.target.value)}
+              placeholder="Bed ID"
+            />
+          </div>
+        ) : (
+          <div className="bed-id-input">
+            <input
+              type="text"
+              value={bedId}
+              onChange={(e) => setBedId(e.target.value)}
+              placeholder="Bed ID"
+            />
+            <label>
+              {selectedLanguage === "en" ? "Bed ID:" : "  :رقم السرير"}{" "}
+            </label>
+          </div>
+        )}
         {mealsData[selectedLanguage].map((meal, index) => (
           <Meal
             key={index}

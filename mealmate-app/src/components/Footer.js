@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <footer>
-        <p>Developed by ICT &copy; 2024</p>
+        <p>Developed by Patient Experiance Team &copy; 2024</p>
         {/* <p></p> */}
         <p>Version: {version} demo</p>
       </footer>
