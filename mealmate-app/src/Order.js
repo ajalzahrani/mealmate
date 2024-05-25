@@ -4,7 +4,7 @@ import Meal from "./components/Meal";
 import mealsData from "./mealsData";
 import PopupMessage from "./components/PopMessage";
 
-const Order = () => {
+const Order = ({ bedParam }) => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [selectedCategories, setSelectedCategories] = useState({
     Breakfast: null,
@@ -12,8 +12,8 @@ const Order = () => {
     Dinner: null,
     Snack: null,
   });
-  const [bedId, setBedId] = useState("");
   const [popupMessage, setPopupMessage] = useState(null);
+  const [bedId, setBedId] = useState("");
 
   useEffect(() => {
     // Function to handle QR code scanning
@@ -26,13 +26,13 @@ const Order = () => {
     // Simulating QR code scanning for demonstration purposes
     const simulateQRCodeScanning = () => {
       // Replace with actual QR code scanning functionality
-      const simulatedScannedData = "BED123"; // Simulated scanned data (e.g., bed ID)
+      const simulatedScannedData = bedId; // Simulated scanned data (e.g., bed ID)
       handleQRCodeScanned(simulatedScannedData);
     };
 
     // Simulate QR code scanning when component mounts
     simulateQRCodeScanning();
-  }, []);
+  }, [bedId]);
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);

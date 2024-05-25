@@ -1,8 +1,9 @@
+import "./App.css"; // Import the CSS file for styling
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Order from "./Order";
 import Kitchen from "./Kitchen";
-import "./App.css"; // Import the CSS file for styling
+import ProblemList from "./ProblemList";
+import Order from "./Order";
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/json-display" className="nav-link">
+              <Link to="/kitchen" className="nav-link">
                 Kitchen
               </Link>
             </li>
@@ -29,7 +30,8 @@ const App = () => {
         </nav>
         <Switch>
           <Route exact path="/" component={Order} />
-          <Route path="/json-display" component={Kitchen} />
+          <Route path="/kitchen" component={Kitchen} />
+          <Route path="/problem-list" component={ProblemList} />
         </Switch>
       </div>
     </Router>

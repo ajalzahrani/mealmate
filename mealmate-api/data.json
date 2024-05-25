@@ -225,5 +225,23 @@
       "Breakfast": "B",
       "Lunch": "A"
     }
+  },
+  {
+    "bedId": "123efaf",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "B",
+      "Snack": "A"
+    }
+  },
+  {
+    "bedId": "3242",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "B"
+    }
   }
 ]
