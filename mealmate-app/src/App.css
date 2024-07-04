@@ -1,14 +1,46 @@
 /* App.css */
 
 .App {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: beige;
+  /* width: 80%; */
+  margin: 0 10px;
 }
 
 .App-body {
   display: flex;
+  flex-direction: row;
+}
+
+.Control-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: start;
+  /* width: 50%; */
+  /* background-color: #61dafb; */
+  padding: 10px;
+}
+
+.Menu-body {
+  display: flex;
+  flex: 3;
   flex-direction: column;
   align-items: center;
+  /* width: 60%; */
+}
+
+.Control-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  border: #444 solid 1px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .language-selector {
@@ -37,7 +69,7 @@
 }
 
 .category-card {
-  
+
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -45,15 +77,15 @@
   width: 45%;
   position: relative;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s;
+  transition: transform 0.2s;
 }
 
 .category-card.selected {
   background-color: #454444;
-    border: 1px solid #444;
+  border: 1px solid #444;
   /* background-color: #282c34; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s;
+  transition: transform 0.2s;
 }
 
 .category-card h3 {
@@ -79,46 +111,23 @@
 }
 
 .submit-button {
-    display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background-color: #61dafb;
-      color: #282c34;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+  display: block;
+  /* margin: 20px auto; */
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .submit-button:hover {
   background-color: #0056b3;
 }
 
-.navbar {
-  background-color: #333;
-  padding: 10px;
-}
 
-.nav-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.nav-link:hover {
-  color: #ff0;
-}
 
 .popup-message {
   position: fixed;
@@ -149,4 +158,11 @@
 .close:hover {
   color: #ccc;
   /* Light gray color on hover */
+}
+
+.patient-data {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 20px;
 }

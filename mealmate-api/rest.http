@@ -8,3 +8,15 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3001/data
+
+###
+GET http://localhost:3000/menu?pid=4056060482
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}

@@ -1,14 +1,17 @@
 import "./Kitchen.css";
 import React, { useState, useEffect } from "react";
+import { apiUrls } from "./api-url.js";
 
 const Kitchen = () => {
   const [jsonData, setJsonData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [viewMode, setViewMode] = useState("card");
+  const [viewMode, setViewMode] = useState("table");
 
   useEffect(() => {
-    fetch("http://localhost:3001/data")
+    setLoading(true);
+    setError(null);
+    fetch(apiUrls.ORDER_FETCH_URL)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -37,7 +40,7 @@ const Kitchen = () => {
     <table className="meal-table">
       <thead>
         <tr>
-          <th>Bed ID</th>
+          <th>MRN</th>
           <th>Breakfast</th>
           <th>Lunch</th>
           <th>Dinner</th>
@@ -45,9 +48,9 @@ const Kitchen = () => {
         </tr>
       </thead>
       <tbody>
-        {jsonData.map((meal, index) => (
+        {jsonData?.map((meal, index) => (
           <tr key={index}>
-            <td>{meal.bedId}</td>
+            <td>{meal.pid}</td>
             <td>{meal.categories.Breakfast || "N/A"}</td>
             <td>{meal.categories.Lunch || "N/A"}</td>
             <td>{meal.categories.Dinner || "N/A"}</td>
@@ -68,9 +71,9 @@ const Kitchen = () => {
       </button>
       {viewMode === "card" ? (
         <div className="meal-cards">
-          {jsonData.map((meal, index) => (
+          {jsonData?.map((meal, index) => (
             <div className="meal-card" key={index}>
-              <h3>Bed ID: {meal.bedId}</h3>
+              <h3>MRN: {meal.pid}</h3>
               <div>
                 <strong>Breakfast:</strong> {meal.categories.Breakfast || "N/A"}
               </div>

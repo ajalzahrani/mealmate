@@ -1,43 +1,33 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
+const errorHandler = require("./middleware/Error_Handling");
+const { readJSONFile, writeJSONFile } = require("./utils/common");
+const { logEvents } = require("./middleware/Log_Event");
+const { menu } = require("./menu.controller");
 
 const app = express();
 app.use(cors());
-const port = 3001;
 
 app.use(bodyParser.json());
 
-const readJSONFile = (filePath) => {
-  try {
-    const data = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error reading JSON file:", error);
-    return null;
-  }
-};
-
-// Function to write JSON file
-const writeJSONFile = (filePath, data) => {
-  try {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    console.log("Data written to JSON file successfully.");
-  } catch (error) {
-    console.error("Error writing JSON file:", error);
-  }
-};
+// GET endpoint to retrieve data from database
+app.get("/menu", (req, res) => {
+  menu(req, res);
+});
 
 // POST endpoint to handle submission from React app
 app.post("/submit", (req, res) => {
-  const { bedId, categories } = req.body;
+  console.log("Received data:", req.body);
 
-  // Validate the presence of bedId and categories
-  if (!bedId || !categories) {
+  const { pid, categories } = req.body;
+  // Validate the presence of pid and categories
+  if (!pid || !categories) {
     return res
       .status(400)
-      .json({ error: "Bed ID and categories are required." });
+      .json({ error: "Patient MRN and categories are required." });
   }
 
   // Read existing data from JSON file
@@ -46,15 +36,13 @@ app.post("/submit", (req, res) => {
 
   // Modify JSON data with received data
   if (jsonData) {
-    jsonData.push({ bedId, categories });
+    jsonData.push({ pid, categories });
   } else {
-    jsonData = [{ bedId, categories }];
+    jsonData = [{ pid, categories }];
   }
 
   // Write modified data back to JSON file
   writeJSONFile(filePath, jsonData);
-
-  console.log("Received data:", req.body);
 
   // Process the data (for demonstration, just sending a success response)
   res.json({ message: "Data received successfully." });
@@ -75,6 +63,44 @@ app.get("/data", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.post("/login", (req, res) => {
+  console.log("Received data:", req.body);
+
+  const { username, password } = req.body;
+  // Validate the presence of pid and categories
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ error: "Username and password are required." });
+  }
+
+  // Read existing data from JSON file
+  const filePath = "user.json";
+  let jsonData = readJSONFile(filePath);
+
+  // check if username and password match of jsonData array
+  if (jsonData) {
+    const user = jsonData.find(
+      (user) => user.username === username && user.password === password
+    );
+    if (user) {
+      res.status(200).json({ success: true });
+    } else {
+      res.status(401).json({ success: false });
+    }
+  }
 });
+
+const PORT = process.env.PORT || 3001;
+
+// Start the Express server
+app.listen(PORT, () => {
+  console.log(
+    `Server listening at http://localhost:${PORT} for ${
+      process.env.IS_DEVELOPMENT ? "Development" : "Production"
+    }`
+  );
+});
+
+// custom error reporter
+app.use(errorHandler);
