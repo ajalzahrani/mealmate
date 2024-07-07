@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3000/api";
 
 export const apiUrls = {
   PATIENT_FETCH_URL: BASE_URL + "/menu?pid=",
