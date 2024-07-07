@@ -1,19 +1,19 @@
-POST http://localhost:3001/submit
+POST http://localhost:3000/api/submit
 Content-Type: application/json
 
 {
-    "bedId": "BED123", 
+    "pid": "BED123",
     "categories": "category"
 }
 
 ###
-GET http://localhost:3001/data
+GET http://localhost:3000/api/data
 
 ###
-GET http://localhost:3000/menu?pid=4056060482
+GET http://localhost:3000/api/menu?pid=4056060482
 
 ###
-POST http://localhost:3000/login
+POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {

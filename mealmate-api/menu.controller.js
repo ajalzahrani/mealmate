@@ -1,3 +1,4 @@
+const createError = require("http-errors");
 const {
   sql_query_fetch_patient_byMRN,
   sql_query_fetch_patient_diet_byMRN,
@@ -14,19 +15,20 @@ const menu = async (req, res, next) => {
     result = await sql_query_fetch_patient_diet_byMRN(pid);
 
     if (!result) {
-      res.status(400).send("No data found");
-      return;
+      // res.status(400).send("No data found");
+      throw createError.BadRequest("No data found");
     }
 
     // Response handling
     if (result.recordset.length === 0) {
-      res.status(400).send("No data found");
+      // res.status(400).send("No data found");
+      throw createError.BadRequest("No data found");
       return;
     } else {
       res.status(200).json(result.recordsets[0][0]);
     }
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 

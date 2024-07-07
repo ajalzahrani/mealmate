@@ -88,5 +88,9 @@
       "Dinner": "B",
       "Snack": "B"
     }
+  },
+  {
+    "pid": "BED123",
+    "categories": "category"
   }
 ]
