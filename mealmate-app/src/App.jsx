@@ -8,6 +8,7 @@ import MealEditor from "./MealEditor";
 import Login from "./login";
 import Layout from "./Layout";
 import RequireAuth from "./RequiredAuth";
+import Missing from "./components/Missing";
 
 import "./App.css";
 
@@ -18,8 +19,11 @@ const App = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Layout />}>
+            {/* Public Routes */}
             <Route path="/login" element={<Login />} />
+            <Route path="/problem-list" element={<ProblemList />} />
 
+            {/* Protected Routes */}
             <Route element={<RequireAuth />}>
               <Route path="/order" element={<Order />} />
             </Route>
@@ -28,13 +32,12 @@ const App = () => {
               <Route path="/kitchen" element={<Kitchen />} />
             </Route>
 
-            <Route path="/problem-list" element={<ProblemList />} />
-
             <Route element={<RequireAuth />}>
               <Route path="/meal-editor" element={<MealEditor />} />
             </Route>
 
-            {/* <Route path="*" element={() => <h1>Page Not Found</h1>} /> */}
+            {/* catch all */}
+            <Route path="*" element={<Missing />} />
           </Route>
         </Routes>
       </div>

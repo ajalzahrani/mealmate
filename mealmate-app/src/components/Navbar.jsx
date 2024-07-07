@@ -1,9 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 
 export default function Navbar() {
   const { logout, auth } = useAuthStore();
+  const { navigate } = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    // navigate("/login");
+  };
 
   return (
     <nav className="navbar">
@@ -32,7 +38,7 @@ export default function Navbar() {
           <li className="logout-button">
             <button
               onClick={(e) => {
-                logout();
+                handleLogout();
               }}>
               Logout
             </button>
