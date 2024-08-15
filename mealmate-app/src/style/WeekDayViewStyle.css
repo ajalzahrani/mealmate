@@ -1,0 +1,15 @@
+/* YourComponent.css */
+.meal-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.meal-table th,
+.meal-table td {
+    padding: 8px;
+    text-align: start;
+    /* Align cells to the start */
+    border: 1px solid #ddd;
+}
+
+/* Add any other styling as needed */

@@ -88,7 +88,14 @@ const MealProvider = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        // height: "100vh",
+      }}>
       {popupMessage && (
         <PopMessage
           message={popupMessage}
@@ -106,65 +113,75 @@ const MealProvider = () => {
         ))}
       </select>
 
-      {/* <form onSubmit={handleSubmit} className="meal-form">
-        <div className="grid-container">
-          {meals.map((item) => (
-            <div key={item.id} className="checkbox-item">
-              <label>
-                <input
-                  type="checkbox"
-                  value={item.id}
-                  checked={selectedItems.includes(item.id)}
-                  onChange={() => handleCheckboxChange(item.id)}
-                />
-                <span>{item.name}</span>
-              </label>
-            </div>
-          ))}
-        </div>
-        <button type="submit">Submit</button>
-      </form> */}
-
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Category</label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}>
-            <option value="A">Category A</option>
-            <option value="B">Category B</option>
-          </select>
-        </div>
-        <div>
-          <label>Time:</label>
-          <select value={time} onChange={(e) => setTime(e.target.value)}>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Snack 1">Snack 1</option>
-            <option value="Snack 2">Snack 2</option>
-          </select>
-        </div>
-        <div>
-          <label>Day:</label>
-          <select value={day} onChange={(e) => setDay(e.target.value)}>
-            <option value={"Sunday"}>Sunday</option>
-            <option value={"Monday"}>Monday</option>
-            <option value={"Tuesday"}>Tuesday</option>
-            <option value={"Wednesday"}>Wednesday</option>
-            <option value={"Thursday"}>Thursday</option>
-            <option value={"Friday"}>Friday</option>
-            <option value={"Saturday"}>Saturday</option>
-          </select>
-        </div>
-        <div>
-          <label>Week:</label>
-          <input
-            type="number"
-            value={week}
-            onChange={(e) => setWeek(Number(e.target.value))}
-          />
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label htmlFor="category">Category:</label>
+              </td>
+              <td>
+                <select
+                  id="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}>
+                  <option value="A">Category A</option>
+                  <option value="B">Category B</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="time">Time:</label>
+              </td>
+              <td>
+                <select
+                  id="time"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}>
+                  <option value="Breakfast">Breakfast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Dinner">Dinner</option>
+                  <option value="Snack 1">Snack 1</option>
+                  <option value="Snack 2">Snack 2</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="day">Day:</label>
+              </td>
+              <td>
+                <select
+                  id="day"
+                  value={day}
+                  onChange={(e) => setDay(e.target.value)}>
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="week">Week:</label>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="week"
+                  value={week}
+                  onChange={(e) => setWeek(Number(e.target.value))}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
         <button type="submit">Add Day Meal</button>
       </form>
     </div>

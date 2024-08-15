@@ -40,7 +40,7 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(
     `Server listening at http://localhost:${PORT} for ${
-      process.env.IS_DEVELOPMENT ? "Development" : "Production"
+      process.env.IS_DEVELOPMENT === "true" ? "Development" : "Production"
     }`
   );
 });

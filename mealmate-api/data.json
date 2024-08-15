@@ -92,5 +92,52 @@
   {
     "pid": "BED123",
     "categories": "category"
+  },
+  {
+    "pid": "TB40.4056060482",
+    "categories": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null,
+      "Snack": null
+    }
+  },
+  {
+    "pid": "TB40.4056060482",
+    "categories": {
+      "undefined": null,
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "A"
+    }
+  },
+  {
+    "pid": "4041346350",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "B",
+      "Snack": "A"
+    }
+  },
+  {
+    "pid": "4041346350",
+    "categories": {
+      "undefined": null,
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "B",
+      "Snack": "B"
+    }
   }
 ]

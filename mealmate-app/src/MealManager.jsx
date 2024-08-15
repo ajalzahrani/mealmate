@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import MealMaster from "./components/MealMaster";
+import DayMealForm from "./components/DayMealForm";
+import MealProvider from "./components/MealProvider";
+import WeekDayView2 from "./components/WeekDayView2";
 
 const mealsData = {
   en: [
@@ -72,6 +76,7 @@ const MealManager = () => {
   const [newCategoryName, setNewCategoryName] = useState(""); // New category name (for adding)
   const [newItemName, setNewItemName] = useState(""); // New item name (for adding)
   const [editItem, setEditItem] = useState(null); // Item to edit
+  const [mealData, setMealData] = useState([]);
 
   // Helper function to get the current meal object
   const getMeal = () => {
@@ -154,97 +159,35 @@ const MealManager = () => {
     setNewItemName(itemName); // Set edit field to current item name
   };
 
+  const handleSetData = (data) => {
+    setMealData(data);
+  };
+
   return (
-    <div>
-      {/* Language selection */}
-      <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-        <option value="en">English</option>
-        <option value="ar">Arabic</option>
-      </select>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}>
+      <h1>Meal Manager</h1>
+      <h3>Add new meal item</h3>
+      <MealMaster />
 
-      {/* Meal selection */}
-      <h2>
-        {mealsData[language].map((meal) => (
-          <button key={meal.name} onClick={() => setSelectedMeal(meal.name)}>
-            {meal.name}
-          </button>
-        ))}
-      </h2>
+      <div
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h3>Add menu item</h3>
+          <MealProvider />
+        </div>
 
-      {/* Add new meal */}
-      <input
-        type="text"
-        placeholder="New Meal Name"
-        value={newMealName}
-        onChange={(e) => setNewMealName(e.target.value)}
-      />
-      <button onClick={handleAddMeal}>Add Meal</button>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h3>Show Menu</h3>
+          <DayMealForm setMealData={handleSetData} />
+        </div>
+      </div>
 
-      {selectedMeal && (
-        <>
-          {/* Category selection */}
-          <h3>
-            {Object.keys(getMeal().categories).map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}>
-                {category}
-              </button>
-            ))}
-          </h3>
-
-          {/* Add new category */}
-          <input
-            type="text"
-            placeholder="New Category Name"
-            value={newCategoryName}
-            onChange={(e) => setNewCategoryName(e.target.value)}
-          />
-          <button onClick={handleAddCategory}>Add Category</button>
-
-          {selectedCategory && (
-            <>
-              {/* Display category items */}
-              <ul>
-                {getCategoryItems().map((item) => (
-                  <li key={item}>
-                    {item}
-                    {selectedItem === item && ( // Conditional rendering for editing
-                      <input
-                        type="text"
-                        value={newItemName}
-                        onChange={(e) => setNewItemName(e.target.value)}
-                      />
-                    )}
-                    {!editItem || editItem !== item ? (
-                      <button onClick={() => handleEditItem(item)}>Edit</button>
-                    ) : (
-                      <>
-                        <button onClick={handleUpdateItem}>Update</button>
-                        <button onClick={() => setEditItem(null)}>
-                          Cancel
-                        </button>
-                      </>
-                    )}
-                    <button onClick={() => handleDeleteItem(item)}>
-                      Delete
-                    </button>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Add new item */}
-              <input
-                type="text"
-                placeholder="New Item Name"
-                value={newItemName}
-                onChange={(e) => setNewItemName(e.target.value)}
-              />
-              <button onClick={handleAddItem}>Add Item</button>
-            </>
-          )}
-        </>
-      )}
+      <WeekDayView2 data={mealData} />
     </div>
   );
 };

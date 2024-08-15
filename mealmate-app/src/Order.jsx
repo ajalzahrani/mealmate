@@ -18,6 +18,7 @@ const Order = () => {
   const [isLoading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);
+  const [UHID, setUHID] = useState(null);
 
   const handleFetchPatientData = async () => {
     setLoading(true);
@@ -33,6 +34,7 @@ const Order = () => {
       })
       .then((data) => {
         setData(data);
+        setUHID(data?.UHID);
         console.log(data);
         setLoading(false);
       })
@@ -89,7 +91,7 @@ const Order = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        pid: mrn,
+        pid: UHID,
         categories: translatedCategories,
       }),
     })
@@ -149,9 +151,19 @@ const Order = () => {
             <div className="patient-data">
               <p>MRN: {data?.UHID}</p>
               <p>Patient Name: {data?.PatientName}</p>
-              <p>Age: {data?.FullAge}</p>
-              <p>Gender: {data?.Gender}</p>
-              <p>Nationality: {data?.Nationality}</p>
+              <p>Age: {data?.Age}</p>
+              <p>
+                Start Date:{" "}
+                {new Date(data?.ReqiStartdate).toISOString().slice(0, 10)}{" "}
+              </p>
+              {/* <p>Start Date: {Date(data?.ReqiStartdate, "en-GB")}</p> */}
+              <p>
+                End Date:{" "}
+                {new Date(data?.ReqiEnddate).toISOString().slice(0, 10)}
+                {""}
+              </p>
+              {/* <p>Gender: {data?.Gender}</p>
+              <p>Nationality: {data?.Nationality}</p> */}
               <p>Bed: {data?.BedName}</p>
               <p>Diet type: {data?.DietType}</p>
               <p>Diet category: {data?.DietCategory}</p>

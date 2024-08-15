@@ -3,11 +3,48 @@ const createError = require("http-errors");
 const fs = require("fs");
 const router = express.Router();
 const { readJSONFile, writeJSONFile } = require("../utils/common");
-const { menu } = require("../menu.controller");
+const { patient } = require("../controller/patient.controller");
+const {
+  addMeal,
+  getAllMeals,
+  getDayMeal,
+  addMealCategory,
+  addMealCategoryDetails,
+  addMenuItem,
+  getDayMenu,
+} = require("../controller/meal.controller");
 
 // GET endpoint to retrieve data from database
-router.get("/menu", (req, res) => {
-  menu(req, res);
+router.get("/patient", (req, res, next) => {
+  patient(req, res, next);
+});
+
+router.get("/meals", (req, res, next) => {
+  getAllMeals(req, res, next);
+});
+
+router.post("/meal", (req, res, next) => {
+  addMeal(req, res, next);
+});
+
+router.post("/add-menu-item", (req, res, next) => {
+  addMenuItem(req, res, next);
+});
+
+router.post("/menu", (req, res, next) => {
+  getDayMenu(req, res, next);
+});
+
+router.get("/daymeal", (req, res, next) => {
+  getDayMeal(req, res, next);
+});
+
+router.post("/category", (req, res, next) => {
+  addMealCategory(req, res, next);
+});
+
+router.post("/categoryDetails", (req, res, next) => {
+  addMealCategoryDetails(req, res, next);
 });
 
 // POST endpoint to handle submission from React app
@@ -96,6 +133,12 @@ router.post("/login", (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+router.get("/mode", (req, res, next) => {
+  res.json({
+    mode: process.env.IS_DEVELOPMENT === "true" ? "Development" : "Production",
+  });
 });
 
 module.exports = router;
