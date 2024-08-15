@@ -44,37 +44,23 @@ const MealProvider = () => {
     e.preventDefault();
 
     try {
-      // const selectedItemsData = data.filter((item) =>
-      //   selectedItems.includes(item.id)
-      // );
-
-      // const newCategoryMeals = selectedItemsData.map((item) => ({
-      //   category: category,
-      //   mealID: item.id,
-      //   mealTime: time,
-      //   mealDay: day,
-      //   mealWeek: week,
-      // }));
-
       if (
         category === undefined ||
         time === undefined ||
         day === undefined ||
-        week === undefined
+        selectedMeal === ""
       ) {
         setPopupMessage("Please select all fields");
         return;
       }
 
       const newDayMeal = {
-        category: category,
+        category,
         mealID: selectedMeal,
         mealTime: time,
         mealDay: day,
         mealWeek: week,
       };
-
-      // console.log({ newCategoryMeals });
 
       const response = await fetch("http://localhost:3000/api/add-menu-item", {
         method: "POST",
@@ -84,24 +70,20 @@ const MealProvider = () => {
         body: JSON.stringify(newDayMeal),
       });
 
-      console.log({ response: response.status });
-
-      if (!response.ok) {
-        console.error("Failed to add day meal here");
-        setPopupMessage(response.text());
-        const responseData = await response.json();
-        setPopupMessage(responseData.message);
-        // setPopupMessage("Failed to add day meal");
-        return;
+      if (response.ok) {
+        const data = await response.json();
+        setMealData(data);
+        console.log({ data });
+        setPopupMessage(data[0].message);
+        // You can handle success here (e.g., show a success message)
+      } else {
+        let errorResponse = await response.text();
+        let errorResponseParsed = JSON.parse(errorResponse);
+        setPopupMessage(errorResponseParsed.error.message);
       }
-
-      const data = await response.json();
-      setMealData(data);
-      console.log({ data });
-      // You can handle success here (e.g., show a success message)
     } catch (error) {
-      console.error("Error adding day meal:", error);
       setPopupMessage("Error adding day meal");
+      console.error("Error:", error);
     }
   };
 
