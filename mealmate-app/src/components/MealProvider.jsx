@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios"; // Import Axios
 import PopMessage from "./PopMessage";
+import "../style/MealProviderStyle.css";
 
 const MealProvider = () => {
   const [time, setTime] = useState("Breakfast"); // Default time is breakfast
@@ -11,6 +13,7 @@ const MealProvider = () => {
   const [meals, setMeals] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState("");
   const [popupMessage, setPopupMessage] = useState(null);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   // useEffect(() => {
   //   console.log(`Time: ${time}, Day: ${day}, Week: ${week}`);
@@ -28,10 +31,41 @@ const MealProvider = () => {
       });
   }, []);
 
+  const handleCheckboxChange = (id) => {
+    // Toggle the selected item
+    setSelectedItems((prevSelected) =>
+      prevSelected.includes(id)
+        ? prevSelected.filter((item) => item !== id)
+        : [...prevSelected, id]
+    );
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // const selectedItemsData = data.filter((item) =>
+      //   selectedItems.includes(item.id)
+      // );
+
+      // const newCategoryMeals = selectedItemsData.map((item) => ({
+      //   category: category,
+      //   mealID: item.id,
+      //   mealTime: time,
+      //   mealDay: day,
+      //   mealWeek: week,
+      // }));
+
+      if (
+        category === undefined ||
+        time === undefined ||
+        day === undefined ||
+        week === undefined
+      ) {
+        setPopupMessage("Please select all fields");
+        return;
+      }
+
       const newDayMeal = {
         category: category,
         mealID: selectedMeal,
@@ -39,6 +73,8 @@ const MealProvider = () => {
         mealDay: day,
         mealWeek: week,
       };
+
+      // console.log({ newCategoryMeals });
 
       const response = await fetch("http://localhost:3000/api/add-menu-item", {
         method: "POST",
@@ -51,8 +87,11 @@ const MealProvider = () => {
       console.log({ response: response.status });
 
       if (!response.ok) {
-        console.error("Failed to add day meal");
-        setPopupMessage("Failed to add day meal");
+        console.error("Failed to add day meal here");
+        setPopupMessage(response.text());
+        const responseData = await response.json();
+        setPopupMessage(responseData.message);
+        // setPopupMessage("Failed to add day meal");
         return;
       }
 
@@ -69,7 +108,7 @@ const MealProvider = () => {
   return (
     <div>
       {popupMessage && (
-        <PopupMessage
+        <PopMessage
           message={popupMessage}
           onClose={() => setPopupMessage(null)}
         />
@@ -84,6 +123,25 @@ const MealProvider = () => {
           </option>
         ))}
       </select>
+
+      {/* <form onSubmit={handleSubmit} className="meal-form">
+        <div className="grid-container">
+          {meals.map((item) => (
+            <div key={item.id} className="checkbox-item">
+              <label>
+                <input
+                  type="checkbox"
+                  value={item.id}
+                  checked={selectedItems.includes(item.id)}
+                  onChange={() => handleCheckboxChange(item.id)}
+                />
+                <span>{item.name}</span>
+              </label>
+            </div>
+          ))}
+        </div>
+        <button type="submit">Submit</button>
+      </form> */}
 
       <form onSubmit={handleSubmit}>
         <div>
