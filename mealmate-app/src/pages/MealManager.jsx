@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MealMaster from "./components/MealMaster";
-import DayMealForm from "./components/DayMealForm";
-import MealProvider from "./components/MealProvider";
-import WeekDayView2 from "./components/WeekDayView2";
+import MealMaster from "../components/MealMaster";
+import DayMealForm from "../components/DayMealForm";
+import MealProvider from "../components/MealProvider";
+import WeekDayView2 from "../components/WeekDayView2";
 
 const mealsData = {
   en: [

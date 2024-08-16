@@ -1,4 +1,4 @@
-import "./Kitchen.css";
+import "../style/Kitchen.css";
 import React from "react";
 
 const ProblemList = () => {

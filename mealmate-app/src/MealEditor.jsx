@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MealManager from "./MealManager";
-import mealsData from "./mealsData";
-import MealContext from "./MealContext"; // Import the context
+import MealManager from "./pages/MealManager";
+import mealsData from "./store/mealsData";
+import MealContext from "./store/MealContext"; // Import the context
 
 const MealEditor = () => {
   const [data, setData] = useState(null);
