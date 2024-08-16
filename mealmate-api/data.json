@@ -1,86 +1,42 @@
 [
   {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "B",
-      "Lunch": "B",
-      "Dinner": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "A",
-      "Lunch": "A",
-      "Dinner": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "B",
-      "Lunch": "A",
-      "Dinner": "B"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "A",
-      "Lunch": "A",
-      "Dinner": "B"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "B",
-      "Lunch": "A",
-      "Dinner": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "B",
-      "Lunch": "B",
-      "Dinner": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
+    "pid": "4056060482",
     "categories": {
       "Breakfast": "A",
       "Lunch": "B",
-      "Dinner": "A"
+      "Dinner": "B",
+      "Snack": "B"
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "pid": "4056060482",
     "categories": {
       "Breakfast": null,
       "Lunch": null,
-      "Dinner": "A"
+      "Dinner": null,
+      "Snack": null
     }
   },
   {
-    "bedId": "BED555",
+    "pid": "4056060482",
     "categories": {
-      "Breakfast": "B",
-      "Lunch": "A",
-      "Dinner": "B"
-    }
-  },
-  {
-    "bedId": "BED666",
-    "categories": {
-      "Breakfast": "A",
+      "Breakfast": null,
       "Lunch": null,
-      "Dinner": "B"
+      "Dinner": "A",
+      "Snack": "B"
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "4056060482",
     "categories": {
       "Breakfast": "A",
       "Lunch": "B",
@@ -89,72 +45,67 @@
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "4041248856",
     "categories": {
-      "undefined": null,
       "Breakfast": "A",
       "Lunch": "B",
       "Dinner": "A",
-      "Snack": "B"
+      "Snack": null
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "4080008483",
     "categories": {
-      "Breakfast": "B",
+      "Breakfast": "A",
       "Lunch": "A",
+      "Dinner": "B",
+      "Snack": "A"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack": "B"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "A",
+      "Dinner": "B",
+      "Snack": "B"
+    }
+  },
+  {
+    "pid": "BED123",
+    "categories": "category"
+  },
+  {
+    "pid": "TB40.4056060482",
+    "categories": {
+      "Breakfast": null,
+      "Lunch": null,
       "Dinner": null,
-      "Snack": "B"
+      "Snack": null
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "TB40.4056060482",
     "categories": {
-      "Breakfast": "B",
-      "Lunch": "B",
-      "Dinner": "B",
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "B",
-      "Lunch": "B",
-      "Dinner": "B",
-      "Snack": "B"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "A",
-      "Lunch": "B",
-      "Dinner": null,
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "A",
-      "Lunch": "B",
-      "Dinner": "A",
-      "Snack": "B"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "Breakfast": "A",
-      "Lunch": "B",
-      "Dinner": null,
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
+      "undefined": null,
       "Breakfast": "A",
       "Lunch": "B",
       "Dinner": "A",
@@ -162,7 +113,7 @@
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "4041346350",
     "categories": {
       "Breakfast": "A",
       "Lunch": "A",
@@ -171,76 +122,21 @@
     }
   },
   {
-    "bedId": "BED123",
+    "pid": "4041346350",
     "categories": {
       "undefined": null,
-      "Dinner": "B"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "undefined": null,
-      "Dinner": "A",
+      "Breakfast": "A",
       "Lunch": "A",
-      "Breakfast": "A",
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "undefined": null,
-      "Breakfast": "A",
-      "Lunch": "B",
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "undefined": null,
-      "Breakfast": "B",
-      "Lunch": "B",
-      "Dinner": "B",
+      "Dinner": "A",
       "Snack": "B"
     }
   },
   {
-    "bedId": "BED123",
-    "categories": {
-      "undefined": null,
-      "Breakfast": "A",
-      "Lunch": "A",
-      "Dinner": "A",
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "BED123",
-    "categories": {
-      "undefined": null,
-      "Snack": "B",
-      "Dinner": "A",
-      "Breakfast": "B",
-      "Lunch": "A"
-    }
-  },
-  {
-    "bedId": "123efaf",
+    "pid": "4056060482",
     "categories": {
       "Breakfast": "A",
       "Lunch": "A",
       "Dinner": "B",
-      "Snack": "A"
-    }
-  },
-  {
-    "bedId": "3242",
-    "categories": {
-      "Breakfast": "A",
-      "Lunch": "B",
-      "Dinner": "A",
       "Snack": "B"
     }
   }

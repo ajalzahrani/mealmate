@@ -1,10 +1,91 @@
-POST http://localhost:3001/submit
+POST http://localhost:3000/api/submit
 Content-Type: application/json
 
 {
-    "bedId": "BED123", 
+    "pid": "BED123",
     "categories": "category"
 }
 
 ###
-GET http://localhost:3001/data
+GET http://localhost:3000/api/data
+
+###
+GET http://localhost:3000/api/menu?pid=4056060482
+
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+###
+GET http://localhost:3000/api/meals
+
+###
+POST http://localhost:3000/api/meal
+Content-Type: application/json
+
+{
+    "name": "c", 
+    "weight": "230200gm",
+    "calories": "60",
+    "name2l": "c",
+    "weight2l": "200جم",
+    "calories2l": "60"
+}
+
+###
+GET http://localhost:3000/api/daymeal
+Content-Type: application/json
+
+{
+    "time": 1, 
+    "day": 2,
+    "week": 1
+}
+
+###
+POST http://localhost:3000/api/category
+Content-Type: application/json
+
+{
+    "mealCategory": "B",
+    "mealTimeId": "1",
+    "dayTitleId": "2",
+    "weekId": "1"
+}
+
+###
+POST http://localhost:3000/api/categoryDetails
+Content-Type: application/json
+
+{
+    "mealCategoryId": 1,
+    "mealId": 76
+}
+
+###
+POST http://localhost:3000/api/add-menu-item
+Content-Type: application/json
+
+{
+  "category": "A",
+  "mealID": 105,
+  "mealTime": "Breakfast",
+  "mealDay": "Sunday",
+  "mealWee": "1"
+}
+
+###
+POST http://localhost:3000/api/menu
+Content-Type: application/json
+
+{
+    "mealTime": "Breakfast",
+    "mealDay": "Sunday",
+    "mealWeek": 1,
+    "viewBy": 2
+}
