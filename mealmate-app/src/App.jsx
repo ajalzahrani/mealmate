@@ -1,16 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import ProblemList from "./pages/ProblemList";
+import Kitchen from "./pages/Kitchen";
+import Order from "./pages/Order";
+import Login from "./pages/login";
 import Navbar from "./components/Navbar";
-import Kitchen from "./Kitchen";
-import ProblemList from "./ProblemList";
-import Order from "./Order";
-import MealEditor from "./MealEditor";
-import Login from "./login";
-import Layout from "./Layout";
-import RequireAuth from "./RequiredAuth";
+import RequireAuth from "./components/RequiredAuth";
 import Missing from "./components/Missing";
+import MealEditor from "./MealEditor";
+import Layout from "./Layout";
 
-import "./App.css";
+import "./style/App.css";
 
 const App = () => {
   return (

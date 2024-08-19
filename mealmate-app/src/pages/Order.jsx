@@ -1,9 +1,9 @@
-import "./App.css";
+import "../style/App.css";
 import React, { useState } from "react";
-import Meal from "./components/Meal";
-import mealsData from "./mealsData";
-import PopupMessage from "./components/PopMessage";
-import { apiUrls } from "./api-url.js";
+import Meal from "../components/Meal";
+import mealsData from "../store/mealsData";
+import PopupMessage from "../components/PopMessage";
+import { apiUrls } from "../api-url.js";
 
 const Order = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");

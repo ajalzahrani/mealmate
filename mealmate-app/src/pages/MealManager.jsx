@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import NewMenuItem from "./components/NewMenuItem";
-import MenuViewerForm from "./components/MenuViewerForm";
-import MenuItemScheduler from "./components/MenuItemScheduler";
-import MenuViewer from "./components/MenuViewerTable";
+import MealMaster from "../components/MealMaster";
+import DayMealForm from "../components/DayMealForm";
+import MealProvider from "../components/MealProvider";
+import WeekDayView2 from "../components/WeekDayView2";
 
 const mealsData = {
   en: [
@@ -171,23 +171,23 @@ const MealManager = () => {
         alignItems: "center",
       }}>
       <h1>Meal Manager</h1>
-      <h3>Add New Menu Item</h3>
-      <NewMenuItem />
+      <h3>Add new meal item</h3>
+      <MealMaster />
 
       <div
         style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <h3>Add Menu Item</h3>
-          <MenuItemScheduler />
+          <h3>Add menu item</h3>
+          <MealProvider />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h3>Show Menu</h3>
-          <MenuViewerForm setMealData={handleSetData} />
+          <DayMealForm setMealData={handleSetData} />
         </div>
       </div>
 
-      <MenuViewer data={mealData} />
+      <WeekDayView2 data={mealData} />
     </div>
   );
 };

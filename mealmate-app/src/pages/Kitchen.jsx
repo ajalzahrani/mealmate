@@ -1,6 +1,6 @@
-import "./Kitchen.css";
+import "../style/Kitchen.css";
 import React, { useState, useEffect } from "react";
-import { apiUrls } from "./api-url.js";
+import { apiUrls } from "../api-url.js";
 
 const Kitchen = () => {
   const [jsonData, setJsonData] = useState(null);
