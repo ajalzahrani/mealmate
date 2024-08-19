@@ -3,13 +3,59 @@
 import React, { useState, useEffect } from "react";
 import PopupMessage from "./PopMessage";
 
-const MealComponent = () => {
+const MenuItemEditor = ({ item, onClose }) => {
+  const [visible, setVisible] = useState(true);
+
+  const handleClose = () => {
+    setVisible(false);
+    onClose();
+  };
+
+  const handleUpdate = () => (event) => {
+    console.log(item.id, event.target.value);
+    // call API to update data
+  };
+
+  const handleDelete = () => {
+    console.log(item.id);
+    // call API to delete data
+  };
+
+  useEffect(() => {
+    console.log(item);
+  }, []);
+
+  return (
+    visible && (
+      <div className="popup-message">
+        <div className="popup-content">
+          <span className="close" onClick={handleClose}>
+            &times;
+          </span>
+          <p>
+            ID: {item.id} - Name: {item.name}
+          </p>
+          <input
+            type="text"
+            defaultValue={item.name}
+            onChange={handleUpdate()}
+          />
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+      </div>
+    )
+  );
+};
+
+const NewMenuItem = () => {
   const [newMealName, setNewMealName] = useState("");
   const [newMealWeight, setNewMealWeight] = useState("");
   const [newMealCalories, setNewMealCalories] = useState("");
   const [newMealName2l, setNewMealName2l] = useState("");
   const [newMealWeight2l, setNewMealWeight2l] = useState("");
   const [newMealCalories2l, setNewMealCalories2l] = useState("");
+
+  const [popupMessage, setPopupMessage] = useState(null);
 
   // Function to add a new meal
   const addMeal = async () => {
@@ -32,14 +78,17 @@ const MealComponent = () => {
       });
 
       if (!res.ok) {
-        alert("Failed to add meal");
+        console.error("Failed to add meal");
+        setPopupMessage("Failed to add meal");
         return;
       }
 
       // Handle success response
-      alert("Meal added successfully");
+      console.log("Meal added successfully");
+      setPopupMessage("Meal added successfully");
     } catch (error) {
       console.error("Error adding meal:", error);
+      setPopupMessage("Error adding meal");
     }
   };
 
@@ -123,8 +172,14 @@ const MealComponent = () => {
           </td>
         </tr>
       </table>
+      {popupMessage && (
+        <PopupMessage
+          message={popupMessage}
+          onClose={() => setPopupMessage(null)}
+        />
+      )}
     </div>
   );
 };
 
-export default MealComponent;
+export default NewMenuItem;

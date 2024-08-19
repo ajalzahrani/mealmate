@@ -7,6 +7,7 @@ const {
   sql_query_fetch_mealCategoryByTimeDayWeek,
   sql_query_fetch_menuItemDay,
   sql_query_insert_menuItem,
+  sql_query_delete_menuItemById,
 } = require("../utils/sql-query");
 const { logEvents } = require("../middleware/Log_Event");
 
@@ -205,6 +206,23 @@ const getDayMenu = async (req, res, next) => {
   }
 };
 
+const deleteMenuItem = async (req, res, next) => {
+  try {
+    const id = req.body.id;
+
+    console.log("coming info: ", { id });
+    const result = await sql_query_delete_menuItemById(id);
+    if (!result) {
+      console.log("No data found");
+      throw createError.BadRequest();
+    } else {
+      res.status(200).json(result.recordsets[0]);
+    }
+  } catch (error) {
+    next(error); // Pass the error to the next middleware
+  }
+};
+
 module.exports = {
   getAllMeals,
   addMeal,
@@ -213,4 +231,5 @@ module.exports = {
   addMealCategoryDetails,
   addMenuItem,
   getDayMenu,
+  deleteMenuItem,
 };

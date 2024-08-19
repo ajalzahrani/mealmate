@@ -12,6 +12,7 @@ const {
   addMealCategoryDetails,
   addMenuItem,
   getDayMenu,
+  deleteMenuItem,
 } = require("../controller/meal.controller");
 
 // GET endpoint to retrieve data from database
@@ -45,6 +46,11 @@ router.post("/category", (req, res, next) => {
 
 router.post("/categoryDetails", (req, res, next) => {
   addMealCategoryDetails(req, res, next);
+});
+
+router.delete("/menu", (req, res, next) => {
+  // delete menu item
+  deleteMenuItem(req, res, next);
 });
 
 // POST endpoint to handle submission from React app

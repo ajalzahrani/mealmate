@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MealList from "./MealList";
-import WeekDayViewComponent from "./WeekDayViewComponent";
-import WeekDayView2 from "./WeekDayView2";
+import MenuViewerTable from "./MenuViewerTable";
 
-const DayMealForm = ({ setMealData }) => {
+const MenuViewerForm = ({ setMealData }) => {
   const [time, setTime] = useState("Breakfast"); // Default time is breakfast
   const [day, setDay] = useState("Sunday"); // Default day is Monday
   const [week, setWeek] = useState(1); // Default week is 1
@@ -33,8 +31,6 @@ const DayMealForm = ({ setMealData }) => {
         body: JSON.stringify(newDayMeal),
       });
 
-      console.log({ response: response.status });
-
       if (!response.ok) {
         console.error("Failed to add day meal");
         return;
@@ -54,7 +50,7 @@ const DayMealForm = ({ setMealData }) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
         flexDirection: "column",
         // height: "100vh",
       }}>
@@ -119,12 +115,9 @@ const DayMealForm = ({ setMealData }) => {
 
         <button type="submit">Show Menu</button>
       </form>
-
-      {/* <MealList meals={mealData} /> */}
-      {/* <WeekDayViewComponent meals={mealData} week={week} day={day} /> */}
-      {/* <WeekDayView2 data={mealData} /> */}
+      {/* <MenuViewerTable data={mealData} /> */}
     </div>
   );
 };
 
-export default DayMealForm;
+export default MenuViewerForm;

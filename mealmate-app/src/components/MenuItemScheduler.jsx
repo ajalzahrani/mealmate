@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"; // Import Axios
 import PopMessage from "./PopMessage";
+import axios from "axios"; // Import Axios
 import "../style/MealProviderStyle.css";
 
-const MealProvider = () => {
+const MenuItemScheduler = () => {
   const [time, setTime] = useState("Breakfast"); // Default time is breakfast
   const [day, setDay] = useState("Sunday"); // Default day is Monday
   const [week, setWeek] = useState(1); // Default week is 1
@@ -92,7 +92,7 @@ const MealProvider = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
         flexDirection: "column",
         // height: "100vh",
       }}>
@@ -118,32 +118,17 @@ const MealProvider = () => {
           <tbody>
             <tr>
               <td>
-                <label htmlFor="category">Category:</label>
+                <label htmlFor="week">Week:</label>
               </td>
               <td>
                 <select
-                  id="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}>
-                  <option value="A">Category A</option>
-                  <option value="B">Category B</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="time">Time:</label>
-              </td>
-              <td>
-                <select
-                  id="time"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}>
-                  <option value="Breakfast">Breakfast</option>
-                  <option value="Lunch">Lunch</option>
-                  <option value="Dinner">Dinner</option>
-                  <option value="Snack 1">Snack 1</option>
-                  <option value="Snack 2">Snack 2</option>
+                  id="week"
+                  value={week}
+                  onChange={(e) => setWeek(Number(e.target.value))}>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
                 </select>
               </td>
             </tr>
@@ -168,15 +153,33 @@ const MealProvider = () => {
             </tr>
             <tr>
               <td>
-                <label htmlFor="week">Week:</label>
+                <label htmlFor="time">Time:</label>
               </td>
               <td>
-                <input
-                  type="number"
-                  id="week"
-                  value={week}
-                  onChange={(e) => setWeek(Number(e.target.value))}
-                />
+                <select
+                  id="time"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}>
+                  <option value="Breakfast">Breakfast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Dinner">Dinner</option>
+                  <option value="Snack 1">Snack 1</option>
+                  <option value="Snack 2">Snack 2</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="category">Category:</label>
+              </td>
+              <td>
+                <select
+                  id="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}>
+                  <option value="A">Category A</option>
+                  <option value="B">Category B</option>
+                </select>
               </td>
             </tr>
           </tbody>
@@ -188,4 +191,4 @@ const MealProvider = () => {
   );
 };
 
-export default MealProvider;
+export default MenuItemScheduler;

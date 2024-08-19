@@ -123,6 +123,11 @@ const sql_query_fetch_menuItemDay = async (
   return db_wrapper(q, "hims");
 };
 
+const sql_query_delete_menuItemById = async (id) => {
+  const q = `EXEC PROC_FS_FoodServiceMenu_deleteById ${id}`;
+  return db_wrapper(q, "hims");
+};
+
 module.exports = {
   sql_query_fetch_patient_byMRN,
   sql_query_fetch_patient_diet_byMRN,
@@ -133,4 +138,5 @@ module.exports = {
   sql_query_fetch_mealCategoryByTimeDayWeek,
   sql_query_insert_menuItem,
   sql_query_fetch_menuItemDay,
+  sql_query_delete_menuItemById,
 };
