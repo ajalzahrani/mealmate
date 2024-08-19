@@ -4,7 +4,7 @@ import ProblemList from "./pages/ProblemList";
 import Kitchen from "./pages/Kitchen";
 import Order from "./pages/Order";
 import Login from "./pages/login";
-import Navbar from "./components/Navbar";
+
 import RequireAuth from "./components/RequiredAuth";
 import Missing from "./components/Missing";
 import MealEditor from "./MealEditor";
@@ -15,7 +15,6 @@ import "./style/App.css";
 const App = () => {
   return (
     <div>
-      <Navbar />
       <div className="App">
         <Routes>
           <Route path="/" element={<Layout />}>
