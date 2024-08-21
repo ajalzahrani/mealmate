@@ -139,5 +139,14 @@
       "Dinner": "B",
       "Snack": "B"
     }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null,
+      "Snack": null
+    }
   }
 ]

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../style/WeekDayViewStyle.css"; // Import your CSS file
+import { apiUrls } from "../api-url";
 
 const MenuItemEditor = ({ item, onClose }) => {
   const [visible, setVisible] = useState(true);
@@ -46,13 +47,13 @@ const MenuItemEditor = ({ item, onClose }) => {
   );
 };
 
-const MenuViewerTable = ({ data }) => {
+const MenuViewerTable = ({ data, isEditable }) => {
   const [menuItems, setMenuItems] = useState(data);
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(null);
 
   useEffect(() => {
-    console.log("Data changed:", menuItems);
+    console.log("MenuViewerTable: ", menuItems);
     setMenuItems(data);
   }, [data]);
 
@@ -65,7 +66,7 @@ const MenuViewerTable = ({ data }) => {
   const handleRemoveMenuItem = async (item) => {
     try {
       // Make the DELETE request
-      const response = await axios.delete(`http://localhost:3000/api/menu`, {
+      const response = await axios.delete(apiUrls.MENU_URL, {
         data: { id: item.id }, // Pass the ID to delete
         headers: {
           "Content-Type": "application/json",
@@ -104,18 +105,23 @@ const MenuViewerTable = ({ data }) => {
       <tr key={item.id}>
         <td onDoubleClick={() => handleDoubleClick(item)}>{item.name}</td>
         <td>{item.name2l}</td> {/* Separate column for name2l */}
-        <td>
-          <button onClick={() => handleRemoveMenuItem(item)}>X</button>
-        </td>
+        {isEditable && (
+          <td>
+            <button onClick={() => handleRemoveMenuItem(item)}>X</button>
+          </td>
+        )}
       </tr>
     ));
+
     const rowsB = B.map((item) => (
       <tr key={item.id}>
         <td>{item.name}</td>
         <td>{item.name2l}</td> {/* Separate column for name2l */}
-        <td>
-          <button onClick={() => handleRemoveMenuItem(item)}>X</button>
-        </td>
+        {isEditable && (
+          <td>
+            <button onClick={() => handleRemoveMenuItem(item)}>X</button>
+          </td>
+        )}
       </tr>
     ));
 
@@ -126,7 +132,7 @@ const MenuViewerTable = ({ data }) => {
           <thead>
             <tr>
               <th>Category A</th>
-              <th>Category B</th>
+              {B.length > 0 && <th>Category B</th>}
             </tr>
           </thead>
           <tbody>
@@ -136,11 +142,13 @@ const MenuViewerTable = ({ data }) => {
                   <tbody>{rowsA}</tbody>
                 </table>
               </td>
-              <td>
-                <table>
-                  <tbody>{rowsB}</tbody>
-                </table>
-              </td>
+              {B.length > 0 && (
+                <td>
+                  <table>
+                    <tbody>{rowsB}</tbody>
+                  </table>
+                </td>
+              )}
             </tr>
           </tbody>
         </table>

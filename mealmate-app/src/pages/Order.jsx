@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Meal from "../components/Meal";
 import mealsData from "../store/mealsData";
 import PopupMessage from "../components/PopMessage";
+import MenuShow from "../components/MenuShow";
 import { apiUrls } from "../api-url.js";
 
 const Order = () => {
@@ -19,6 +20,23 @@ const Order = () => {
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);
   const [UHID, setUHID] = useState(null);
+
+  const handleLanguageChange = (event) => {
+    setSelectedLanguage(event.target.value);
+    setSelectedCategories({
+      Breakfast: null,
+      Lunch: null,
+      Dinner: null,
+      Snack: null,
+    });
+  };
+
+  const handleCategoryChange = (mealName, newCategory) => {
+    setSelectedCategories((prevCategories) => ({
+      ...prevCategories,
+      [mealName]: newCategory,
+    }));
+  };
 
   const handleFetchPatientData = async () => {
     setLoading(true);
@@ -45,23 +63,6 @@ const Order = () => {
       .finally(() => {
         setLoading(false);
       });
-  };
-
-  const handleLanguageChange = (event) => {
-    setSelectedLanguage(event.target.value);
-    setSelectedCategories({
-      Breakfast: null,
-      Lunch: null,
-      Dinner: null,
-      Snack: null,
-    });
-  };
-
-  const handleCategoryChange = (mealName, newCategory) => {
-    setSelectedCategories((prevCategories) => ({
-      ...prevCategories,
-      [mealName]: newCategory,
-    }));
   };
 
   const handleSubmit = async () => {
@@ -172,7 +173,7 @@ const Order = () => {
           )}
         </div>
         <div className="Menu-body">
-          {mealsData[selectedLanguage].map((meal, index) => (
+          {/* {mealsData[selectedLanguage].map((meal, index) => (
             <Meal
               key={index}
               name={meal.name}
@@ -181,7 +182,8 @@ const Order = () => {
               onCategoryChange={handleCategoryChange}
               selectedLanguage={selectedLanguage}
             />
-          ))}
+          ))} */}
+          <MenuShow />
           <button onClick={handleSubmit} className="submit-button">
             Submit
           </button>

@@ -32,27 +32,6 @@ router.post("/add-menu-item", (req, res, next) => {
   addMenuItem(req, res, next);
 });
 
-router.post("/menu", (req, res, next) => {
-  getDayMenu(req, res, next);
-});
-
-router.get("/daymeal", (req, res, next) => {
-  getDayMeal(req, res, next);
-});
-
-router.post("/category", (req, res, next) => {
-  addMealCategory(req, res, next);
-});
-
-router.post("/categoryDetails", (req, res, next) => {
-  addMealCategoryDetails(req, res, next);
-});
-
-router.delete("/menu", (req, res, next) => {
-  // delete menu item
-  deleteMenuItem(req, res, next);
-});
-
 // POST endpoint to handle submission from React app
 router.post("/submit", (req, res, next) => {
   try {
@@ -145,6 +124,27 @@ router.get("/mode", (req, res, next) => {
   res.json({
     mode: process.env.IS_DEVELOPMENT === "true" ? "Development" : "Production",
   });
+});
+
+router.post("/menu", (req, res, next) => {
+  getDayMenu(req, res, next);
+});
+
+// router.get("/daymeal", (req, res, next) => {
+//   getDayMeal(req, res, next);
+// });
+
+// router.post("/category", (req, res, next) => {
+//   addMealCategory(req, res, next);
+// });
+
+// router.post("/categoryDetails", (req, res, next) => {
+//   addMealCategoryDetails(req, res, next);
+// });
+
+router.delete("/menu", (req, res, next) => {
+  // delete menu item
+  deleteMenuItem(req, res, next);
 });
 
 module.exports = router;

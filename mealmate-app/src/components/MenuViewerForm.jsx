@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MenuViewerTable from "./MenuViewerTable";
+import { apiUrls } from "../api-url";
 
 const MenuViewerForm = ({ setMealData }) => {
   const [time, setTime] = useState("Breakfast"); // Default time is breakfast
@@ -23,7 +24,7 @@ const MenuViewerForm = ({ setMealData }) => {
         viewBy: time === "-1" ? viewBy : "3",
       };
 
-      const response = await fetch("http://localhost:3000/api/menu", {
+      const response = await fetch(apiUrls.MENU_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +33,7 @@ const MenuViewerForm = ({ setMealData }) => {
       });
 
       if (!response.ok) {
-        console.error("Failed to add day meal");
+        console.error("Failed to fetch menu");
         return;
       }
 
@@ -41,7 +42,7 @@ const MenuViewerForm = ({ setMealData }) => {
       console.log({ data });
       // You can handle success here (e.g., show a success message)
     } catch (error) {
-      console.error("Error adding day meal:", error);
+      console.error("Error fetching menu:", error);
     }
   };
 
