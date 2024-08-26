@@ -6,13 +6,6 @@ import PopupMessage from "../components/PopMessage";
 import MenuShow from "../components/MenuShow";
 import { apiUrls } from "../api-url.js";
 
-const MealCategories = {
-  BREAKFAST: 0,
-  LUNCH: 1,
-  DINNER: 2,
-  SNACK1: 3,
-};
-
 const Order = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [selectedCategories, setSelectedCategories] = useState({
@@ -29,10 +22,15 @@ const Order = () => {
   const [UHID, setUHID] = useState(null);
 
   const handleCategoryClick = (mealTime, category) => {
-    console.log({ mealTime, category });
+    let mealTimeTrans = "";
+
+    if (mealTime === "Snack 1") mealTimeTrans = "Snack1";
+    else mealTimeTrans = mealTime;
+
+    console.log({ mealTimeTrans, category });
     setSelectedCategories((prevCategories) => ({
       ...prevCategories,
-      [mealTime]: category,
+      [mealTimeTrans]: category,
     }));
   };
 

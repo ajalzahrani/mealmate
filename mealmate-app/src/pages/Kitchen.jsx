@@ -54,7 +54,7 @@ const Kitchen = () => {
             <td>{meal.categories.Breakfast || "N/A"}</td>
             <td>{meal.categories.Lunch || "N/A"}</td>
             <td>{meal.categories.Dinner || "N/A"}</td>
-            <td>{meal.categories.Snack || "N/A"}</td>
+            <td>{meal.categories.Snack1 || "N/A"}</td>
           </tr>
         ))}
       </tbody>
