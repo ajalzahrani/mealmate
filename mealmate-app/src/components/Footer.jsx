@@ -9,7 +9,7 @@ const Footer = () => {
   const [mode, setMode] = useState(null);
 
   const callForMode = async () => {
-    await fetch(apiUrls.MODE_URL, {
+    await fetch(apiUrls.FETCH_API_MODE_URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

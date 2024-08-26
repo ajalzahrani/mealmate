@@ -22,7 +22,7 @@ const MenuItemScheduler = () => {
 
   useEffect(() => {
     // Fetch meals data from the GET endpoint
-    fetch(apiUrls.MEALS_URL)
+    fetch(apiUrls.FETCH_MEALS_URL)
       .then((response) => response.json())
       .then((data) => {
         setMeals(data);

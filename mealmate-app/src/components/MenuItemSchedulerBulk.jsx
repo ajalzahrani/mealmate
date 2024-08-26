@@ -25,7 +25,7 @@ const MenuItemScheduler = () => {
 
   useEffect(() => {
     // Fetch meals data from the GET endpoint
-    fetch(apiUrls.MEALS_URL)
+    fetch(apiUrls.FETCH_MEALS_URL)
       .then((response) => response.json())
       .then((data) => {
         setMeals(data);
@@ -74,7 +74,7 @@ const MenuItemScheduler = () => {
           continue;
         }
 
-        const response = await fetch(apiUrls.MENUITEM_INSERT_BYNAME_URL, {
+        const response = await fetch(apiUrls.ADD_MENUITEM_BYNAME_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

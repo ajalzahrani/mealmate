@@ -11,7 +11,7 @@ const Kitchen = () => {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    fetch(apiUrls.ORDER_FETCH_URL)
+    fetch(apiUrls.FETCH_PATIENT_ORDER__URL)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

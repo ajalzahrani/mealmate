@@ -56,7 +56,7 @@ const Order = () => {
   const handleFetchPatientData = async () => {
     setLoading(true);
     setIsError(false);
-    await fetch(apiUrls.PATIENT_FETCH_URL + mrn, {
+    await fetch(apiUrls.FETCH_PATIENT_URL + mrn, {
       method: "GET",
     })
       .then((response) => {
@@ -88,7 +88,7 @@ const Order = () => {
     // Map selected categories to English equivalents if the current language is Arabic
     const translatedCategories = { ...selectedCategories };
 
-    await fetch(apiUrls.ORDER_SUBMIT_URL, {
+    await fetch(apiUrls.SUBMIT_PATIENT_ORDER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

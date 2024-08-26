@@ -66,7 +66,7 @@ const MenuViewerTable = ({ data, isEditable }) => {
   const handleRemoveMenuItem = async (item) => {
     try {
       // Make the DELETE request
-      const response = await axios.delete(apiUrls.MENU_URL, {
+      const response = await axios.delete(apiUrls.DELETE_MENU_URL, {
         data: { id: item.id }, // Pass the ID to delete
         headers: {
           "Content-Type": "application/json",

@@ -24,7 +24,7 @@ const MenuViewerForm = ({ setMealData }) => {
         viewBy: time === "-1" ? viewBy : "3",
       };
 
-      const response = await fetch(apiUrls.MENU_URL, {
+      const response = await fetch(apiUrls.FETCH_MENU_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
