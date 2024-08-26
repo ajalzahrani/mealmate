@@ -1,10 +1,17 @@
 import "../style/App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Meal from "../components/Meal";
 import mealsData from "../store/mealsData";
 import PopupMessage from "../components/PopMessage";
 import MenuShow from "../components/MenuShow";
 import { apiUrls } from "../api-url.js";
+
+const MealCategories = {
+  BREAKFAST: 0,
+  LUNCH: 1,
+  DINNER: 2,
+  SNACK1: 3,
+};
 
 const Order = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -12,7 +19,7 @@ const Order = () => {
     Breakfast: null,
     Lunch: null,
     Dinner: null,
-    Snack: null,
+    "Snack 1": null,
   });
   const [popupMessage, setPopupMessage] = useState(null);
   const [mrn, setMrn] = useState("4056060482");
@@ -20,6 +27,14 @@ const Order = () => {
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);
   const [UHID, setUHID] = useState(null);
+
+  const handleCategoryClick = (mealTime, category) => {
+    console.log({ mealTime, category });
+    setSelectedCategories((prevCategories) => ({
+      ...prevCategories,
+      [mealTime]: category,
+    }));
+  };
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
@@ -72,19 +87,6 @@ const Order = () => {
     }
     // Map selected categories to English equivalents if the current language is Arabic
     const translatedCategories = { ...selectedCategories };
-    if (selectedLanguage === "ar") {
-      const arabicToEnglishMap = {
-        فطور: "Breakfast",
-        الغداء: "Lunch",
-        العشاء: "Dinner",
-        "وجبة خفيفة": "Snack",
-      };
-      Object.keys(translatedCategories).forEach((key) => {
-        const englishKey = arabicToEnglishMap[key];
-        translatedCategories[englishKey] = translatedCategories[key];
-        delete translatedCategories[key];
-      });
-    }
 
     await fetch(apiUrls.ORDER_SUBMIT_URL, {
       method: "POST",
@@ -98,18 +100,12 @@ const Order = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (selectedLanguage === "en") {
-          setPopupMessage("order submitted successfuly");
-        } else {
-          setPopupMessage("تم تقديم الطلب بنجاح");
-        }
+        setPopupMessage("order submitted successfuly");
+        console.log(data);
       })
       .catch((error) => {
-        if (selectedLanguage === "en") {
-          setPopupMessage("Error submiting order");
-        } else {
-          setPopupMessage("خطأ في تقديم الطلب");
-        }
+        setPopupMessage("Error submiting order");
+        console.error("Error:", error);
       });
   };
 
@@ -146,8 +142,6 @@ const Order = () => {
 
           {isLoading && <p>Loading ...</p>}
 
-          {/* {isError && <p>Error fetching patient data</p>} */}
-
           {data && (
             <div className="patient-data">
               <p>MRN: {data?.UHID}</p>
@@ -157,14 +151,11 @@ const Order = () => {
                 Start Date:{" "}
                 {new Date(data?.ReqiStartdate).toISOString().slice(0, 10)}{" "}
               </p>
-              {/* <p>Start Date: {Date(data?.ReqiStartdate, "en-GB")}</p> */}
               <p>
                 End Date:{" "}
                 {new Date(data?.ReqiEnddate).toISOString().slice(0, 10)}
                 {""}
               </p>
-              {/* <p>Gender: {data?.Gender}</p>
-              <p>Nationality: {data?.Nationality}</p> */}
               <p>Bed: {data?.BedName}</p>
               <p>Diet type: {data?.DietType}</p>
               <p>Diet category: {data?.DietCategory}</p>
@@ -173,17 +164,17 @@ const Order = () => {
           )}
         </div>
         <div className="Menu-body">
-          {/* {mealsData[selectedLanguage].map((meal, index) => (
-            <Meal
-              key={index}
-              name={meal.name}
-              categories={meal.categories}
-              selectedCategory={selectedCategories[meal.name]}
-              onCategoryChange={handleCategoryChange}
-              selectedLanguage={selectedLanguage}
-            />
-          ))} */}
-          <MenuShow />
+          <div>
+            Breakfast: {selectedCategories.Breakfast} {" | "}
+            Lunch: {selectedCategories.Lunch} {" | "}
+            Dinner: {selectedCategories.Dinner} {" | "}
+            Snack: {selectedCategories["Snack 1"]}
+          </div>
+
+          <MenuShow
+            handleCategoryClick={handleCategoryClick}
+            selectedLanguage={selectedLanguage}
+          />
           <button onClick={handleSubmit} className="submit-button">
             Submit
           </button>

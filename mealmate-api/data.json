@@ -148,5 +148,23 @@
       "Dinner": null,
       "Snack": null
     }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null,
+      "Snack": null
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack 1": "A"
+    }
   }
 ]

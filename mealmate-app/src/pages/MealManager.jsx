@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NewMenuItem from "../components/NewMenuItem";
 import MenuViewerForm from "../components/MenuViewerForm";
 import MenuItemScheduler from "../components/MenuItemScheduler";
+import MenuItemSchedulerBulk from "../components/MenuItemSchedulerBulk";
 import MenuViewerTable from "../components/MenuViewerTable";
 
 const MealManager = () => {
@@ -36,6 +37,9 @@ const MealManager = () => {
       </div>
 
       <MenuViewerTable data={mealData} isEditable={true} />
+
+      <h3>Bulk Insert</h3>
+      <MenuItemSchedulerBulk />
     </div>
   );
 };

@@ -113,6 +113,17 @@ const sql_query_insert_menuItem = async (
   return db_wrapper(q, "hims");
 };
 
+const sql_query_insert_menuItemByName = async (
+  category,
+  mealName,
+  mealTime,
+  mealDay,
+  mealWeek
+) => {
+  const q = `EXEC PROC_FS_FoodServiceMenu_InsertByName '${category}', N'${mealName}', '${mealTime}', '${mealDay}', '${mealWeek}'`;
+  return db_wrapper(q, "hims");
+};
+
 const sql_query_fetch_menuItemDay = async (
   mealTime,
   mealDay,
@@ -139,4 +150,5 @@ module.exports = {
   sql_query_insert_menuItem,
   sql_query_fetch_menuItemDay,
   sql_query_delete_menuItemById,
+  sql_query_insert_menuItemByName,
 };

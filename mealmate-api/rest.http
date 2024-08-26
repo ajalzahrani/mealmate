@@ -76,7 +76,19 @@ Content-Type: application/json
   "mealID": 105,
   "mealTime": "Breakfast",
   "mealDay": "Sunday",
-  "mealWee": "1"
+  "mealWeek": "1"
+}
+
+###
+POST http://localhost:3000/api/add-menu-item-name
+Content-Type: application/json
+
+{
+  "category": "A",
+  "mealName": "Harira soup",
+  "mealTime": "Dinner",
+  "mealDay": "Sunday",
+  "mealWeek": "1"
 }
 
 ###

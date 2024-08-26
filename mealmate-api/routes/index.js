@@ -11,6 +11,7 @@ const {
   addMealCategory,
   addMealCategoryDetails,
   addMenuItem,
+  addMenuItemByName,
   getDayMenu,
   deleteMenuItem,
 } = require("../controller/meal.controller");
@@ -30,6 +31,10 @@ router.post("/meal", (req, res, next) => {
 
 router.post("/add-menu-item", (req, res, next) => {
   addMenuItem(req, res, next);
+});
+
+router.post("/add-menu-item-name", (req, res, next) => {
+  addMenuItemByName(req, res, next);
 });
 
 // POST endpoint to handle submission from React app

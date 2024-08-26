@@ -8,6 +8,7 @@ const {
   sql_query_fetch_menuItemDay,
   sql_query_insert_menuItem,
   sql_query_delete_menuItemById,
+  sql_query_insert_menuItemByName,
 } = require("../utils/sql-query");
 const { logEvents } = require("../middleware/Log_Event");
 
@@ -175,6 +176,47 @@ const addMenuItem = async (req, res, next) => {
   }
 };
 
+const addMenuItemByName = async (req, res, next) => {
+  try {
+    const category = req.body.category;
+    const mealName = req.body.mealName;
+    const mealTime = req.body.mealTime;
+    const mealDay = req.body.mealDay;
+    const mealWeek = req.body.mealWeek;
+
+    console.log("coming info: ", {
+      category,
+      mealName,
+      mealTime,
+      mealDay,
+      mealWeek,
+    });
+    const result = await sql_query_insert_menuItemByName(
+      category,
+      mealName,
+      mealTime,
+      mealDay,
+      mealWeek
+    );
+
+    // parse result and check status
+    const parsedResult = result.recordsets[0][0];
+
+    if (!result) {
+      console.log("No data found");
+      throw createError.NotFound();
+    } else {
+      if (parsedResult.status === -1) {
+        throw createError[405](parsedResult.message);
+      } else {
+        res.status(200).json(result.recordsets[0]);
+      }
+    }
+  } catch (error) {
+    next(error); // Pass the error to the next middleware
+  }
+};
+
 const getDayMenu = async (req, res, next) => {
   try {
     const mealTime = req.body.mealTime;
@@ -230,6 +272,7 @@ module.exports = {
   addMealCategory,
   addMealCategoryDetails,
   addMenuItem,
+  addMenuItemByName,
   getDayMenu,
   deleteMenuItem,
 };
