@@ -2,9 +2,6 @@ const createError = require("http-errors");
 const {
   sql_query_fetch_mealMaster,
   sql_query_insert_mealMaster,
-  sql_query_insert_mealCategory,
-  sql_query_insert_mealCategoryDetails,
-  sql_query_fetch_mealCategoryByTimeDayWeek,
   sql_query_fetch_menuItemDay,
   sql_query_insert_menuItem,
   sql_query_delete_menuItemById,
@@ -52,83 +49,6 @@ const addMeal = async (req, res, next) => {
       } else {
         throw createError[405](result.recordsets[0][0].message);
       }
-    }
-  } catch (error) {
-    next(error); // Pass the error to the next middleware
-  }
-};
-
-const getDayMeal = async (req, res, next) => {
-  try {
-    console.log(req.body);
-    const time = req.body.time;
-    const day = req.body.day;
-    const week = req.body.week;
-    const result = await sql_query_fetch_mealCategoryByTimeDayWeek(
-      time,
-      day,
-      week
-    );
-
-    // console.log({ result });
-
-    if (!result) {
-      console.log("No data found");
-      throw createError.NotFound();
-    } else {
-      res.status(200).json(result.recordsets[0]);
-    }
-  } catch (error) {
-    next(error); // Pass the error to the next middleware
-  }
-};
-
-const addMealCategory = async (req, res, next) => {
-  try {
-    const mealCategory = req.body.mealCategory;
-    const mealTimeId = req.body.mealTimeId;
-    const dayTitleId = req.body.dayTitleId;
-    const weekId = req.body.weekId;
-
-    console.log({
-      mealCategory,
-      mealTimeId,
-      dayTitleId,
-      weekId,
-    });
-
-    const result = await sql_query_insert_mealCategory(
-      mealCategory,
-      mealTimeId,
-      dayTitleId,
-      weekId
-    );
-    if (!result) {
-      console.log("No data found");
-      throw createError.NotFound();
-    } else {
-      res.status(200).json(result.recordsets[0]);
-    }
-  } catch (error) {
-    next(error); // Pass the error to the next middleware
-  }
-};
-
-const addMealCategoryDetails = async (req, res, next) => {
-  try {
-    const mealCategoryId = req.body.mealCategoryId;
-    const mealId = req.body.mealId;
-    console.log("coming info: ", { mealCategoryId, mealId });
-    const result = await sql_query_insert_mealCategoryDetails(
-      mealCategoryId,
-      mealId
-    );
-    console.log({ result });
-    if (!result) {
-      console.log("No data found");
-      throw createError.NotFound();
-    } else {
-      res.status(200).json(result.recordsets[0]);
     }
   } catch (error) {
     next(error); // Pass the error to the next middleware
@@ -268,9 +188,6 @@ const deleteMenuItem = async (req, res, next) => {
 module.exports = {
   getAllMeals,
   addMeal,
-  getDayMeal,
-  addMealCategory,
-  addMealCategoryDetails,
   addMenuItem,
   addMenuItemByName,
   getDayMenu,

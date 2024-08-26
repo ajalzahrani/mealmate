@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PopMessage from "./PopMessage";
 import axios from "axios"; // Import Axios
 import "../style/MealProviderStyle.css";
+import { apiUrls } from "../api-url";
 
 const MenuItemScheduler = () => {
   const [time, setTime] = useState("Breakfast"); // Default time is breakfast
@@ -21,7 +22,7 @@ const MenuItemScheduler = () => {
 
   useEffect(() => {
     // Fetch meals data from the GET endpoint
-    fetch("http://localhost:3000/api/meals")
+    fetch(apiUrls.MEALS_URL)
       .then((response) => response.json())
       .then((data) => {
         setMeals(data);
@@ -62,7 +63,7 @@ const MenuItemScheduler = () => {
         mealWeek: week,
       };
 
-      const response = await fetch("http://localhost:3000/api/add-menu-item", {
+      const response = await fetch(apiUrls.ADD_MENU_ITEM_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

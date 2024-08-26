@@ -166,5 +166,14 @@
       "Dinner": "A",
       "Snack 1": "A"
     }
+  },
+  {
+    "pid": "4056039939",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack 1": "A"
+    }
   }
 ]

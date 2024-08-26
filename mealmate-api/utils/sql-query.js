@@ -80,28 +80,6 @@ const sql_query_insert_mealMaster = async (
   return db_wrapper(q, "hims");
 };
 
-const sql_query_fetch_mealCategoryByTimeDayWeek = async (time, day, week) => {
-  const q = `EXEC PROC_FS_MealCategory_selectBy_time_day_week '${parseInt(
-    time
-  )}', '${parseInt(day)}', '${parseInt(week)}'`;
-  return db_wrapper(q, "hims");
-};
-
-const sql_query_insert_mealCategory = async (
-  mealCategory,
-  mealTimeId,
-  dayTitleId,
-  weekId
-) => {
-  const q = `EXEC PROC_FS_MealCategory_insert '${mealCategory}', '${mealTimeId}', '${dayTitleId}', '${weekId}'`;
-  return db_wrapper(q, "hims");
-};
-
-const sql_query_insert_mealCategoryDetails = async (mealCategoryId, mealId) => {
-  const q = `EXEC PROC_FS_MealCategoryDetail_insert ${mealCategoryId}, ${mealId}`;
-  return db_wrapper(q, "hims");
-};
-
 const sql_query_insert_menuItem = async (
   category,
   mealID,
@@ -144,9 +122,6 @@ module.exports = {
   sql_query_fetch_patient_diet_byMRN,
   sql_query_fetch_mealMaster,
   sql_query_insert_mealMaster,
-  sql_query_insert_mealCategory,
-  sql_query_insert_mealCategoryDetails,
-  sql_query_fetch_mealCategoryByTimeDayWeek,
   sql_query_insert_menuItem,
   sql_query_fetch_menuItemDay,
   sql_query_delete_menuItemById,

@@ -1,4 +1,8 @@
-POST http://localhost:3000/api/submit
+### Retrive inpatient data
+GET http://localhost:3000/api/patient?pid=4056060482
+
+### post patient selections
+POST http://localhost:3000/api/submit-patient-order
 Content-Type: application/json
 
 {
@@ -7,10 +11,9 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/data
+GET http://localhost:3000/api/fetch-patient-order
 
-###
-GET http://localhost:3000/api/menu?pid=4056060482
+
 
 ###
 POST http://localhost:3000/api/login
@@ -25,7 +28,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/meals
 
 ###
-POST http://localhost:3000/api/meal
+POST http://localhost:3000/api/add-meal
 Content-Type: application/json
 
 {

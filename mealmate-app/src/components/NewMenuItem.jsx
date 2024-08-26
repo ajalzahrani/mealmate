@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import PopupMessage from "./PopMessage";
+import { apiUrls } from "../api-url";
 
 const MenuItemEditor = ({ item, onClose }) => {
   const [visible, setVisible] = useState(true);
@@ -69,7 +70,7 @@ const NewMenuItem = () => {
         calories2l: newMealCalories2l,
       };
 
-      const res = await fetch("http://localhost:3000/api/meal", {
+      const res = await fetch(apiUrls.ADD_NEW_MEAL_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

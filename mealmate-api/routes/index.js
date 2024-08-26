@@ -7,38 +7,19 @@ const { patient } = require("../controller/patient.controller");
 const {
   addMeal,
   getAllMeals,
-  getDayMeal,
-  addMealCategory,
-  addMealCategoryDetails,
   addMenuItem,
   addMenuItemByName,
   getDayMenu,
   deleteMenuItem,
 } = require("../controller/meal.controller");
 
-// GET endpoint to retrieve data from database
+// get inpatient data
 router.get("/patient", (req, res, next) => {
   patient(req, res, next);
 });
 
-router.get("/meals", (req, res, next) => {
-  getAllMeals(req, res, next);
-});
-
-router.post("/meal", (req, res, next) => {
-  addMeal(req, res, next);
-});
-
-router.post("/add-menu-item", (req, res, next) => {
-  addMenuItem(req, res, next);
-});
-
-router.post("/add-menu-item-name", (req, res, next) => {
-  addMenuItemByName(req, res, next);
-});
-
-// POST endpoint to handle submission from React app
-router.post("/submit", (req, res, next) => {
+// post patient selections
+router.post("/submit-patient-order", (req, res, next) => {
   try {
     console.log("Received data:", req.body);
 
@@ -72,7 +53,7 @@ router.post("/submit", (req, res, next) => {
   }
 });
 
-router.get("/data", (req, res, next) => {
+router.get("/fetch-patient-order", (req, res, next) => {
   try {
     // Read the data.json file asynchronously
     fs.readFile("data.json", "utf8", (err, data) => {
@@ -131,25 +112,29 @@ router.get("/mode", (req, res, next) => {
   });
 });
 
+router.get("/meals", (req, res, next) => {
+  getAllMeals(req, res, next);
+});
+
+router.post("/add-meal", (req, res, next) => {
+  addMeal(req, res, next);
+});
+
 router.post("/menu", (req, res, next) => {
   getDayMenu(req, res, next);
 });
 
-// router.get("/daymeal", (req, res, next) => {
-//   getDayMeal(req, res, next);
-// });
-
-// router.post("/category", (req, res, next) => {
-//   addMealCategory(req, res, next);
-// });
-
-// router.post("/categoryDetails", (req, res, next) => {
-//   addMealCategoryDetails(req, res, next);
-// });
-
 router.delete("/menu", (req, res, next) => {
   // delete menu item
   deleteMenuItem(req, res, next);
+});
+
+router.post("/add-menu-item", (req, res, next) => {
+  addMenuItem(req, res, next);
+});
+
+router.post("/add-menu-item-name", (req, res, next) => {
+  addMenuItemByName(req, res, next);
 });
 
 module.exports = router;

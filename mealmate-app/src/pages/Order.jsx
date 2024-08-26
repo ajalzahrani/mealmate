@@ -19,7 +19,7 @@ const Order = () => {
     Breakfast: null,
     Lunch: null,
     Dinner: null,
-    "Snack 1": null,
+    Snack1: null,
   });
   const [popupMessage, setPopupMessage] = useState(null);
   const [mrn, setMrn] = useState("4056060482");
