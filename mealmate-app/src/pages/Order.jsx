@@ -20,6 +20,7 @@ const Order = () => {
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);
   const [UHID, setUHID] = useState(null);
+  // const [dayWeekData, setDayWeekData] = useState(null);
 
   const handleCategoryClick = (mealTime, category) => {
     let mealTimeTrans = "";
@@ -106,6 +107,30 @@ const Order = () => {
         console.error("Error:", error);
       });
   };
+
+  // const handleFetchDayWeek = async () => {
+  //   try {
+  //     const response = await fetch(apiUrls.FETCH_DAY_WEEK_URL, {
+  //       method: "GET",
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch dayWeekData");
+  //     }
+
+  //     const dayWeekData = await response.json();
+  //     console.log({ dayWeekData });
+  //     setDayWeekData(dayWeekData);
+
+  //     // You can handle success here (e.g., show a success message)
+  //   } catch (error) {
+  //     console.error("Error fetching day week data:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   handleFetchDayWeek();
+  // }, []);
 
   return (
     <div>

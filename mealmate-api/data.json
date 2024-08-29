@@ -175,5 +175,60 @@
       "Dinner": "A",
       "Snack 1": "A"
     }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "B",
+      "Snack": null,
+      "Snack 1": "A"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "A",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack1": "A"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null,
+      "Snack1": null
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "A",
+      "Snack1": "A"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": "B",
+      "Snack1": "B"
+    }
+  },
+  {
+    "pid": "4056060482",
+    "categories": {
+      "Breakfast": "B",
+      "Lunch": "B",
+      "Dinner": null,
+      "Snack": null
+    }
   }
 ]

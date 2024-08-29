@@ -12,6 +12,7 @@ const {
   getDayMenu,
   deleteMenuItem,
 } = require("../controller/meal.controller");
+const { getDayWeek } = require("../controller/day.controller");
 
 // get inpatient data
 router.get("/patient", (req, res, next) => {
@@ -31,6 +32,8 @@ router.post("/submit-patient-order", (req, res, next) => {
       //   .status(400)
       //   .json({ error: "Patient MRN and categories are required." });
     }
+
+    console.log({ pid, categories });
 
     // Read existing data from JSON file
     const filePath = "data.json";
@@ -135,6 +138,10 @@ router.post("/add-menu-item", (req, res, next) => {
 
 router.post("/add-menu-item-name", (req, res, next) => {
   addMenuItemByName(req, res, next);
+});
+
+router.get("/day-week", (req, res, next) => {
+  getDayWeek(req, res, next);
 });
 
 module.exports = router;

@@ -12,4 +12,5 @@ export const apiUrls = {
   DELETE_MENU_URL: BASE_URL + "/menu",
   ADD_MENU_ITEM_URL: BASE_URL + "/add-menu-item",
   ADD_MENUITEM_BYNAME_URL: BASE_URL + "/add-menu-item-name",
+  FETCH_DAY_WEEK_URL: BASE_URL + "/day-week",
 };

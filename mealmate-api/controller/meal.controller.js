@@ -8,6 +8,7 @@ const {
   sql_query_insert_menuItemByName,
 } = require("../utils/sql-query");
 const { logEvents } = require("../middleware/Log_Event");
+const { getDayWeek } = require("../utils/day-week");
 
 const getAllMeals = async (req, res, next) => {
   try {
@@ -139,17 +140,22 @@ const addMenuItemByName = async (req, res, next) => {
 
 const getDayMenu = async (req, res, next) => {
   try {
-    const mealTime = req.body.mealTime;
-    const mealDay = req.body.mealDay;
-    const mealWeek = req.body.mealWeek;
-    const viewBy = req.body.viewBy;
+    let mealTime = "";
+    let mealDay = getDayWeek().menuDay;
+    let mealWeek = getDayWeek().menuWeek.toString();
+    let viewBy = 2;
 
-    console.log("coming info: ", {
-      mealTime,
-      mealDay,
-      mealWeek,
-      viewBy,
-    });
+    if (
+      req.body &&
+      req.body.mealDay !== undefined &&
+      req.body.mealDay !== null
+    ) {
+      mealTime = req.body.mealTime || mealTime;
+      mealDay = req.body.mealDay || mealDay;
+      mealWeek = req.body.mealWeek || mealWeek;
+      viewBy = req.body.viewBy || viewBy;
+    }
+
     const result = await sql_query_fetch_menuItemDay(
       mealTime,
       mealDay,

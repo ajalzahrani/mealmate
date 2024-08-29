@@ -51,26 +51,6 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/category
-Content-Type: application/json
-
-{
-    "mealCategory": "B",
-    "mealTimeId": "1",
-    "dayTitleId": "2",
-    "weekId": "1"
-}
-
-###
-POST http://localhost:3000/api/categoryDetails
-Content-Type: application/json
-
-{
-    "mealCategoryId": 1,
-    "mealId": 76
-}
-
-###
 POST http://localhost:3000/api/add-menu-item
 Content-Type: application/json
 
@@ -99,11 +79,15 @@ POST http://localhost:3000/api/menu
 Content-Type: application/json
 
 {
-    "mealTime": "Breakfast",
-    "mealDay": "Sunday",
-    "mealWeek": 1,
-    "viewBy": 2
+  "mealTime": "Breakfast",
+  "mealDay": "Sunday",
+  "mealWeek": "1",
+  "viewBy": 2
 }
+
+###
+POST http://localhost:3000/api/menu
+Content-Type: application/json
 
 ###
 DELETE  http://localhost:3000/api/menu
@@ -112,3 +96,6 @@ Content-Type: application/json
 {
     "id": "1"
 }
+
+###
+GET  http://localhost:3000/api/day-week

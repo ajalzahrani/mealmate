@@ -8,33 +8,11 @@ export default function MenuShow({ handleCategoryClick, selectedLanguage }) {
     handleFetchMenu();
   }, []);
 
-  const getDayOfWeek = () => {
-    // Get the current date
-    const today = new Date();
-
-    // Array of day names
-    const daysOfWeek = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    // Get the current day name
-    const currentDay = daysOfWeek[today.getDay()];
-
-    console.log({ currentDay }); // Outputs: "Sunday", "Monday", etc.
-    return currentDay;
-  };
-
   const handleFetchMenu = async () => {
     try {
       const newDayMeal = {
         mealTime: "",
-        mealDay: getDayOfWeek(),
+        mealDay: "Sunday",
         mealWeek: "1",
         viewBy: "2",
       };
@@ -44,7 +22,7 @@ export default function MenuShow({ handleCategoryClick, selectedLanguage }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newDayMeal),
+        //body: JSON.stringify(newDayMeal),
       });
 
       if (!response.ok) {
