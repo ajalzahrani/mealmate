@@ -15,7 +15,7 @@ const Order = () => {
     Snack1: null,
   });
   const [popupMessage, setPopupMessage] = useState(null);
-  const [mrn, setMrn] = useState("4056060482");
+  const [mrn, setMrn] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);

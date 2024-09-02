@@ -31,3 +31,4 @@ yarn-error.log*
 
 
 mealmate-api/data.json
+mealmate-api/logs/reqLog.txt
