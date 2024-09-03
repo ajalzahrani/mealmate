@@ -25,6 +25,16 @@ Content-Type: application/json
 }
 
 ###
+POST http://172.16.51.191:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+
+###
 GET http://localhost:3000/api/meals
 
 ###
